@@ -1,0 +1,14 @@
+{%extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="container">
+    <h2>Login</h2>
+    <form action="/autenticar" method="post">
+      <input type="text" placeholder="Usuário" required name="usuario">
+      <input type="password" placeholder="Senha" required name="senha">
+      <input type="submit" value="Entrar">
+    </form>
+  </div>
+
+{% endblock %} 
