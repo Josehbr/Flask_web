@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <div class="container">
+    <h2>Cadastrar</h2>
+    <form action="/cadastrar" method="post">
+      <input class="input-field" type="text" placeholder="Nome" required name="nome">
+      <input class="input-field" type="text" placeholder="Email" required name="email">
+      <input class="input-field" type="password" placeholder="Senha" required name="senha">
+      <input class="submit-button" type="submit" value="Entrar">
+    </form>
+  </div>
+
+
+
+{% endblock %}
+

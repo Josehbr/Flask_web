@@ -5,7 +5,6 @@ from sqlalchemy.orm import Session
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 
-
 Base = declarative_base()
 
 class Cliente(Base):
@@ -18,6 +17,7 @@ class Cliente(Base):
 
 caminho_banco_dados = r'f:\projeto_web\bd\usuario.db'
 engine = create_engine(f'sqlite:///{caminho_banco_dados}')
+Base.metadata.create_all(engine)
 session = Session(bind=engine)
 
 @app.route('/')
@@ -25,11 +25,26 @@ session = Session(bind=engine)
 def home():
     return render_template('home.html')
 
+@app.route('/cadastrar', methods=['GET', 'POST'])
+def cadastrar():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+
+        cliente = Cliente(nome=nome, email=email, senha=senha)
+        session.add(cliente)
+        session.commit()
+
+        flash("Cadastro realizado com sucesso")
+        return redirect('/login')
+    else:
+        return render_template('cadastrar.html')
+
+
 @app.route('/login')
 def login():
     return render_template('login.html')
-    
-
 
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
@@ -42,6 +57,5 @@ def autenticar():
         email = cliente.email
         return render_template('autenticar.html', usuario=usuario, email=email)
     else:
-        flash("dados incorretos")
-        return redirect ('/login')
-
+        flash("Dados incorretos")
+        return redirect('/login')
