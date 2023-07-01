@@ -46,8 +46,8 @@ def cadastrar():
 def login():
     return render_template('login.html')
 
-@app.route('/autenticar', methods=['POST'])
-def autenticar():
+@app.route('/perfil', methods=['POST'])
+def perfil():
     usuario = request.form.get('usuario')
     senha = request.form.get('senha')
 
@@ -55,7 +55,7 @@ def autenticar():
 
     if cliente:
         email = cliente.email
-        return render_template('autenticar.html', usuario=usuario, email=email)
+        return render_template('perfil.html', usuario=usuario, email=email)
     else:
         flash("Dados incorretos")
         return redirect('/login')

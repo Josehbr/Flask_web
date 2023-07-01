@@ -11,14 +11,12 @@
 
     <div class="profile-card">
         <div class="avatar">
-            <img src="avatar.jpg" alt="Avatar">
+            <img src="{{ url_for('static', filename='img/imagem.jpg') }}">
         </div>
         <h2>{{ usuario }}</h2>
-        <p>{{ usuario }}</p>
 
         <div class="contact-info">
-            <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
-            <p><a href="mailto:john.doe@example.com">{{ email }}</a></p>
+            <p><a>{{ email }}</a></p>
         </div>
     </div>
 </div>
