@@ -1,14 +1,23 @@
-{%extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block conteudo %}
-
-<div class="container">
+  <div class="container">
     <h2>Login</h2>
     <form action="/autenticar" method="post">
       <input type="text" placeholder="Usuário" required name="usuario">
       <input type="password" placeholder="Senha" required name="senha">
       <input type="submit" value="Entrar">
     </form>
+    
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+      <div class="flash-message">
+        <ul>
+          {% for mensagem in mensagens %}
+            <li>{{ mensagem }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   </div>
-
-{% endblock %} 
+{% endblock %}

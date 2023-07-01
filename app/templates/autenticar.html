@@ -1,0 +1,27 @@
+{%extends 'base.html' %}
+
+{% block conteudo %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_aut.css')}}">
+</head>
+
+<div class="container">
+    <h1>Perfil</h1>
+
+    <div class="profile-card">
+        <div class="avatar">
+            <img src="avatar.jpg" alt="Avatar">
+        </div>
+        <h2>{{ usuario }}</h2>
+        <p>{{ usuario }}</p>
+
+        <div class="contact-info">
+            <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            <p><a href="mailto:john.doe@example.com">{{ email }}</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %} 
+
+
